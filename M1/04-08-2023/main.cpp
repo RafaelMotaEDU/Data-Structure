@@ -72,10 +72,33 @@ int search(List list, char value)
 
 bool remove(List &list, char value)
 {
+    int position = search(list, value);
+
+    if (position == -1)
+        return false;
+
+    list.lastIndex--;
+
+    for (int index = position; index <= list.lastIndex; index++)
+    {
+        list.array[index] = list.array[index + 1];
+    }
+
+    return true;
 }
 
 bool remove(List &list, int position)
 {
+    if (position < 0 || position > list.lastIndex)
+        return false;
+
+    list.lastIndex--;
+
+    for (int index = position; index <= list.lastIndex; index++)
+    {
+        list.array[index] = list.array[index + 1];
+    }
+    return true;
 }
 
 void show(List list)
@@ -99,6 +122,8 @@ int main()
     insert(l1, 'A', ' ');
     insert(l1, 'M', ' ');
 
+    remove(l1, 0);
+    remove(l1, 'E');
 
     cout << endl
          << "List: ";
