@@ -60,6 +60,14 @@ bool insert(List &list, char value, char sort = ' ')
 
 int search(List list, char value)
 {
+    for (int index = 0; index <= list.lastIndex; index++)
+    {
+        if (value == list.array[index])
+        {
+            return index;
+        }
+    }
+    return -1;
 }
 
 bool remove(List &list, char value)
@@ -74,7 +82,7 @@ void show(List list)
 {
     for (int index = 0; index <= list.lastIndex; index++)
     {
-        cout << list.array[index] << "\t";
+        cout << list.array[index] << " ";
     }
 }
 
@@ -82,16 +90,15 @@ int main()
 {
     List l1;
 
-    cout << l1.lastIndex << endl;
-
     initialize(l1);
-    cout << l1.lastIndex << endl;
-    insert(l1, 'P', 'D');
-    insert(l1, 'E', 'D');
-    insert(l1, 'R', 'D');
-    insert(l1, 'N', 'D');
-    insert(l1, 'A', 'D');
-    insert(l1, 'M', 'D');
+
+    insert(l1, 'P', ' ');
+    insert(l1, 'E', ' ');
+    insert(l1, 'R', ' ');
+    insert(l1, 'N', ' ');
+    insert(l1, 'A', ' ');
+    insert(l1, 'M', ' ');
+
 
     cout << endl
          << "List: ";
