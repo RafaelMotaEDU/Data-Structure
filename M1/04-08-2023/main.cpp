@@ -116,6 +116,12 @@ bool removeAll(List &list, char value)
     return amountFound == 0 ? true : false;
 }
 
+List cloneList(List list)
+{
+    List newList = list;
+    return newList;
+}
+
 void show(List list)
 {
     for (int index = 0; index <= list.lastIndex; index++)
@@ -142,9 +148,13 @@ int main()
     insert(l1, 'E', ' ');
     insert(l1, 'A', ' ');
 
-    removeAll(l1, 'A');
+    List clonedList = cloneList(l1);
 
     cout << endl
          << "List: ";
+
     show(l1);
+    cout << endl
+         << "List cloned: ";
+    show(clonedList);
 }
