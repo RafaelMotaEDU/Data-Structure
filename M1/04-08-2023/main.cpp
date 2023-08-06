@@ -101,6 +101,21 @@ bool remove(List &list, int position)
     return true;
 }
 
+bool removeAll(List &list, char value)
+{
+    int amountFound = 0;
+    int indexValue = search(list, value);
+
+    while (indexValue != -1)
+    {
+        amountFound++;
+        remove(list, indexValue);
+        indexValue = search(list, value);
+    }
+
+    return amountFound == 0 ? true : false;
+}
+
 void show(List list)
 {
     for (int index = 0; index <= list.lastIndex; index++)
@@ -121,9 +136,13 @@ int main()
     insert(l1, 'N', ' ');
     insert(l1, 'A', ' ');
     insert(l1, 'M', ' ');
+    insert(l1, 'M', ' ');
+    insert(l1, 'M', ' ');
+    insert(l1, 'A', ' ');
+    insert(l1, 'E', ' ');
+    insert(l1, 'A', ' ');
 
-    remove(l1, 0);
-    remove(l1, 'E');
+    removeAll(l1, 'A');
 
     cout << endl
          << "List: ";
