@@ -122,6 +122,25 @@ List cloneList(List list)
     return newList;
 }
 
+List concatList(List list1, List list2, char sort = ' ')
+{
+
+    List newList;
+    initialize(newList);
+
+    for (int index = 0; index <= list1.lastIndex; index++)
+    {
+        insert(newList, list1.array[index], sort);
+    }
+
+    for (int index = 0; index <= list2.lastIndex; index++)
+    {
+        insert(newList, list2.array[index], sort);
+    }
+
+    return newList;
+}
+
 void show(List list)
 {
     for (int index = 0; index <= list.lastIndex; index++)
@@ -133,28 +152,39 @@ void show(List list)
 int main()
 {
     List l1;
+    List l2;
 
     initialize(l1);
+    initialize(l2);
 
-    insert(l1, 'P', ' ');
-    insert(l1, 'E', ' ');
-    insert(l1, 'R', ' ');
-    insert(l1, 'N', ' ');
-    insert(l1, 'A', ' ');
-    insert(l1, 'M', ' ');
-    insert(l1, 'M', ' ');
-    insert(l1, 'M', ' ');
-    insert(l1, 'A', ' ');
-    insert(l1, 'E', ' ');
-    insert(l1, 'A', ' ');
+    insert(l1, 'D');
+    insert(l1, 'F');
+    insert(l1, 'A');
 
-    List clonedList = cloneList(l1);
+    insert(l2, 'C');
+    insert(l2, 'B');
+    insert(l2, 'G');
 
     cout << endl
          << "List: ";
 
     show(l1);
+
+    // List clone = cloneList(l1);
+    // insert(clone, 'D');
+    // insert(clone, 'E');
+    // insert(clone, 'F');
+
     cout << endl
-         << "List cloned: ";
-    show(clonedList);
+         << "List: ";
+    show(l2);
+
+    cout << endl
+         << "List concat: ";
+
+    List concat = concatList(l1, l2, 'C');
+    show(concat);
+
+    cout << endl;
+    cout << concat.lastIndex;
 }
