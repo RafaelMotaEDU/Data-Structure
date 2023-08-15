@@ -23,14 +23,14 @@ void inicializateLDE(LDE<T> &list)
 }
 
 template <typename T>
-void showLDE(LDE<T> list)
+void showLDE(LDE<T> list, char sort = 'C')
 {
-    Node<T> *aux = list.start;
+    Node<T> *aux = sort == 'C' ? list.start : list.end;
 
     while (aux != NULL)
     {
         cout << aux->info << " ";
-        aux = aux->eloP;
+        aux = sort == 'C' ? aux->eloP : aux->eloA;
     }
     if (list.start == NULL)
         cout << "<Vazio>";
@@ -79,10 +79,10 @@ bool insertLDE(LDE<T> &list, T valor)
     while (aux->info < valor && aux->eloP->info < valor)
         aux = aux->eloP;
 
-    novo->eloA = aux->eloA;
+    novo->eloA = aux;
     novo->eloP = aux->eloP;
+    aux->eloP->eloA = novo;
     aux->eloP = novo;
-    aux->eloA = novo;
     return true;
 }
 
@@ -99,7 +99,6 @@ bool inserirFinalLDE(LDE<T> &list, T valor)
     if (novo == NULL)
         return false;
     novo->info = valor;
-    novo->eloA = NULL;
     novo->eloP = NULL;
 
     // empty list
@@ -191,8 +190,12 @@ int main()
     insertLDE(list1, 'O');
 
     cout << endl
-         << "list 1: ";
+         << "list 1 C: ";
     showLDE(list1);
+
+    cout << endl
+         << "list 1 D: ";
+    showLDE(list1, 'D');
 
     cout << endl;
     // Node<char> *aux = searchLDE(list1, 'M');
