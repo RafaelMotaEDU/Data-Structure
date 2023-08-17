@@ -199,3 +199,49 @@ void liberarLUE(LUE<T> &list)
         aux = aux2;
     }
 }
+
+int main()
+{
+    LUE<char> list1;
+
+    inicializeLUE(list1);
+
+    insertLUE(list1, 'P');
+    insertLUE(list1, 'E');
+    insertLUE(list1, 'R');
+    insertLUE(list1, 'N');
+    insertLUE(list1, 'A');
+    insertLUE(list1, 'M');
+    insertLUE(list1, 'B');
+    insertLUE(list1, 'U');
+    insertLUE(list1, 'C');
+    insertLUE(list1, 'O');
+
+    cout << endl
+         << "Lista 1: ";
+    showLUE(list1);
+
+    removeLUE(list1, 'A');
+    removeLUE(list1, 'U');
+    removeLUE(list1, 'N');
+    removeLUE(list1, 'E');
+    removeLUE(list1, 'R');
+    removeLUE(list1, 'O');
+
+    cout << endl
+         << "list 1: ";
+    showLUE(list1);
+
+    removeLUE(list1, 'B');
+    removeLUE(list1, 'C');
+    removeLUE(list1, 'M');
+    removeLUE(list1, 'P');
+
+    cout << endl
+         << "list 1: ";
+    showLUE(list1);
+
+    liberarLUE(list1);
+
+    cout << endl;
+}
