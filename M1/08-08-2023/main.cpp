@@ -187,7 +187,7 @@ bool removeLUE(LUE<T> &list, T value)
 }
 
 template <typename T>
-void liberarLUE(LUE<T> &list)
+void releaseLUE(LUE<T> &list)
 {
     Node<T> *aux = list.start;
     Node<T> *aux2;
@@ -241,7 +241,7 @@ int main()
          << "list 1: ";
     showLUE(list1);
 
-    liberarLUE(list1);
+    releaseLUE(list1);
 
     cout << endl;
 }
