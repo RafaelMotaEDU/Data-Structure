@@ -28,6 +28,25 @@ void posFixed(Node *root){
     cout << root->info << " ";
 }
 
+int counterNodes(Node *root){
+    if(root == NULL) return 0;
+    return 1 + counterNodes(root->left) + counterNodes(root->right);
+
+}
+
+bool searchCharInNode (Node *root, char value){
+    if(root == NULL) return false;
+    if(root->info == value) return true;
+    return searchCharInNode(root->left, value) || searchCharInNode(root->right, value);
+}
+
+void removeNode(Node *root) {
+    if(root == NULL) return;
+    remove(root->left);
+    remove(root->right);
+    delete root;
+}
+
 int main(){
     Node *root, *node1, *node2, *node3, *node4, *node5;
 
@@ -61,4 +80,11 @@ int main(){
     cout<<endl;
     cout << "Pos: ";
     posFixed(root);
+
+    cout << endl;
+
+    cout << "Node count: " << counterNodes(root) << endl;
+
+    bool charValue = searchCharInNode(root, 'D');
+    cout << "Exist: " << charValue;
 }
